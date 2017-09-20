@@ -48,3 +48,12 @@ Using the Obj structure.
 
     digest := h.Digest(buf, data1, data2)
 
+## Intended usage
+
+The intended usage leading to the development of this package is to compute a MAC for secure cookies.
+The computation of an hmac with the standard lib requires actually 5 allocations.
+With this package it requires none. 
+
+The secure cookie has to be verified for nearly every request. Thus, avoiding allocations would lower the
+pressure on the GC.  
+
